@@ -14,8 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestController
 public class MeController {
 
-    private static final Logger log = LoggerFactory.getLogger(MeController.class);
-
     @GetMapping("/api/me")
     public MeResponse me(
             @AuthenticationPrincipal Jwt jwt,
