@@ -37,7 +37,6 @@ import com.martin.liftarc.api.program.entity.WorkoutDay;
 import com.martin.liftarc.api.program.repository.ExerciseRepository;
 import com.martin.liftarc.api.program.repository.ProgramRepository;
 import com.martin.liftarc.api.program.repository.WorkoutDayRepository;
-import com.martin.liftarc.api.program.service.ProgramService;
 
 @ExtendWith(MockitoExtension.class)
 class ProgramServiceTest {
