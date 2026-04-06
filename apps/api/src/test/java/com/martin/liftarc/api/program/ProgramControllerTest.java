@@ -28,6 +28,7 @@ import com.martin.liftarc.api.program.dto.CreateWorkoutDayRequest;
 import com.martin.liftarc.api.program.dto.ProgramDayExerciseResponse;
 import com.martin.liftarc.api.program.dto.ProgramResponse;
 import com.martin.liftarc.api.program.dto.WorkoutDayResponse;
+import com.martin.liftarc.api.program.service.ProgramService;
 
 import tools.jackson.databind.ObjectMapper;
 

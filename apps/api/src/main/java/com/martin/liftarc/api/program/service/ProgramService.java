@@ -1,4 +1,4 @@
-package com.martin.liftarc.api.program;
+package com.martin.liftarc.api.program.service;
 
 import java.util.Comparator;
 import java.util.HashSet;
@@ -24,6 +24,9 @@ import com.martin.liftarc.api.program.entity.Exercise;
 import com.martin.liftarc.api.program.entity.Program;
 import com.martin.liftarc.api.program.entity.ProgramDayExercise;
 import com.martin.liftarc.api.program.entity.WorkoutDay;
+import com.martin.liftarc.api.program.repository.ExerciseRepository;
+import com.martin.liftarc.api.program.repository.ProgramRepository;
+import com.martin.liftarc.api.program.repository.WorkoutDayRepository;
 
 @Service
 public class ProgramService {

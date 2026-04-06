@@ -34,6 +34,10 @@ import com.martin.liftarc.api.program.entity.Exercise;
 import com.martin.liftarc.api.program.entity.Program;
 import com.martin.liftarc.api.program.entity.ProgramDayExercise;
 import com.martin.liftarc.api.program.entity.WorkoutDay;
+import com.martin.liftarc.api.program.repository.ExerciseRepository;
+import com.martin.liftarc.api.program.repository.ProgramRepository;
+import com.martin.liftarc.api.program.repository.WorkoutDayRepository;
+import com.martin.liftarc.api.program.service.ProgramService;
 
 @ExtendWith(MockitoExtension.class)
 class ProgramServiceTest {
@@ -65,7 +69,7 @@ class ProgramServiceTest {
 
         when(programRepository.findByUserIdAndActiveTrue(userId))
                 .thenReturn(Optional.of(activeProgram));
-                
+
         when(workoutDayRepository.findAllByProgramIdWithExercises(100L))
         .thenReturn(activeProgram.getWorkoutDays());
 
