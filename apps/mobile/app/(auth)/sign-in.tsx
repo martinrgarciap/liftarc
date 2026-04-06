@@ -41,7 +41,7 @@ export default function SignInScreen() {
         return;
       }
 
-      router.replace("/home");
+      router.replace("/program");
     } catch {
       setErrorText("Something went wrong while signing in.");
     } finally {

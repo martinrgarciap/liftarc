@@ -27,7 +27,7 @@ function RootGate() {
   }
 
   if (session && inAuthGroup) {
-    return <Redirect href="/home" />;
+    return <Redirect href="/program" />;
   }
 
   return <Slot />;

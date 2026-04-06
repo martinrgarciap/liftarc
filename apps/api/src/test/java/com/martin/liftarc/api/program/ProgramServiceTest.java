@@ -44,6 +44,9 @@ class ProgramServiceTest {
     @Mock
     private ExerciseRepository exerciseRepository;
 
+    @Mock
+    private WorkoutDayRepository workoutDayRepository;
+
     @InjectMocks
     private ProgramService programService;
 
@@ -62,6 +65,9 @@ class ProgramServiceTest {
 
         when(programRepository.findByUserIdAndActiveTrue(userId))
                 .thenReturn(Optional.of(activeProgram));
+                
+        when(workoutDayRepository.findAllByProgramIdWithExercises(100L))
+        .thenReturn(activeProgram.getWorkoutDays());
 
         ProgramResponse response = programService.getCurrentProgram(userId);
 

@@ -30,13 +30,16 @@ public class ProgramService {
 
     private final ProgramRepository programRepository;
     private final ExerciseRepository exerciseRepository;
+    private final WorkoutDayRepository workoutDayRepository;
 
     public ProgramService(
             ProgramRepository programRepository,
-            ExerciseRepository exerciseRepository
+            ExerciseRepository exerciseRepository,
+            WorkoutDayRepository workoutDayRepository
     ) {
         this.programRepository = programRepository;
         this.exerciseRepository = exerciseRepository;
+        this.workoutDayRepository = workoutDayRepository;
     }
 
     @Transactional(readOnly = true)
@@ -47,7 +50,9 @@ public class ProgramService {
                         "No active program found."
                 ));
 
-        return mapProgram(program);
+        List<WorkoutDay> workoutDays = workoutDayRepository.findAllByProgramIdWithExercises(program.getId());
+
+        return mapProgram(program, workoutDays);
     }
 
     @Transactional
@@ -106,7 +111,8 @@ public class ProgramService {
         }
 
         Program saved = programRepository.save(program);
-        return mapProgram(saved);
+
+        return mapProgram(saved, saved.getWorkoutDays());
     }
 
     private void validateWorkoutDays(List<CreateWorkoutDayRequest> workoutDays) {
@@ -145,8 +151,8 @@ public class ProgramService {
         }
     }
 
-    private ProgramResponse mapProgram(Program program) {
-        List<WorkoutDayResponse> workoutDays = program.getWorkoutDays().stream()
+    private ProgramResponse mapProgram(Program program, List<WorkoutDay> workoutDays) {
+        List<WorkoutDayResponse> workoutDayResponses = workoutDays.stream()
                 .sorted(Comparator.comparing(WorkoutDay::getPosition))
                 .map(day -> new WorkoutDayResponse(
                         day.getId(),
@@ -176,7 +182,7 @@ public class ProgramService {
                 program.getName(),
                 program.getDescription(),
                 program.isActive(),
-                workoutDays
+                workoutDayResponses
         );
     }
 }
