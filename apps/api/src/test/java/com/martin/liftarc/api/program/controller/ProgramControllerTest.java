@@ -1,4 +1,4 @@
-package com.martin.liftarc.api.program;
+package com.martin.liftarc.api.program.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
